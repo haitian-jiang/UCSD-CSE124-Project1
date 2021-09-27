@@ -37,10 +37,14 @@ func gendata(w http.ResponseWriter, r *http.Request) {
     if v, exist := r.Form["numBytes"]; !exist{
         fmt.Fprintln(w, "Please give the parameter numBytes!")
     } else {
-        numBytes_str := v[0]
-        if numBytes, err := strconv.Atoi(numBytes_str); err != nil {
+        numBytesStr := v[0]
+        if numBytes, err := strconv.Atoi(numBytesStr); err != nil {
             fmt.Fprintln(w, "Please give an integer as parameter!")
         } else {
+//            bufSz := 1000000
+//            for ; numBytes > bufSz; numBytes -= bufSz {
+//                fmt.Fprintf(w, "%s", strings.Repeat("A", bufSz))
+//            }
             fmt.Fprintf(w, "%s", strings.Repeat("A", numBytes))
         }
     }
