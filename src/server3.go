@@ -41,10 +41,6 @@ func gendata(w http.ResponseWriter, r *http.Request) {
         if numBytes, err := strconv.Atoi(numBytesStr); err != nil {
             fmt.Fprintln(w, "Please give an integer as parameter!")
         } else {
-//            bufSz := 1000000
-//            for ; numBytes > bufSz; numBytes -= bufSz {
-//                fmt.Fprintf(w, "%s", strings.Repeat("A", bufSz))
-//            }
             fmt.Fprintf(w, "%s", strings.Repeat("A", numBytes))
         }
     }
